@@ -1,0 +1,20 @@
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    background-color: seashell;
+    
+}
+
+.row {
+    display: flex;
+    flex: 1;
+    
+}
+
+.gridSquare {
+    border: 1px solid gray;
+    flex: 1;
+}
