@@ -2,14 +2,22 @@ body {
     display: flex;
     gap: 20px;
     justify-content: center;
+    flex-wrap: wrap;
     
 }
 
-.slidercontainer {
+.gridOptions {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    gap: 20px;
+}
+
+.colorPicker {
+    align-self: center;
+    border: none;
+    
 }
 
 .grid {
