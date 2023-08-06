@@ -5,6 +5,17 @@ const sliderObj = document.querySelector('.slider');        //obj for actual sli
 let sliderValueObj = document.querySelector('.sliderValue'); //obj for value of slider displayed on screen
 sliderValueObj.textContent = `${sliderObj.value} x ${sliderObj.value}`; 
 
+
+let mouseDownVar = false;
+
+document.addEventListener('mousedown', () => {
+    mouseDownVar = true
+});
+
+document.addEventListener('mouseup', () => {
+    mouseDownVar = false;
+});
+
 sliderObj.value = 50;          //creates initial grid of 50x50
 gridCreation();
 
@@ -12,10 +23,14 @@ gridCreation();
 sliderObj.oninput = function() {   //create new grid when slider is adjusted
     gridCreation();
 }
+
+
+
 colorPicker.oninput = function() {
     const squares = document.querySelectorAll('.gridSquare');
-    squares.forEach(gridSquare => gridSquare.addEventListener('mouseover', function() {
-        this.style.cssText = `background-color: ${colorPicker.value}`;
+    squares.forEach(gridSquare => gridSquare.addEventListener('mouseover', function(e) {
+        if (mouseDownVar)
+            e.target.style.cssText = `background-color: ${colorPicker.value}`;
     }));
 }
 
@@ -41,9 +56,22 @@ function gridCreation() {
         
         gridObj.appendChild(newRow);
     }
+
+
+    /* Logic for painting squares 
+       The second event handler paints a square when an individual square is clicked
+    
+    */
+
     const squares = document.querySelectorAll('.gridSquare');
-    squares.forEach(gridSquare => gridSquare.addEventListener('mouseover', function() {
-        this.style.cssText = `background-color: ${colorPicker.value}`;
+    squares.forEach(gridSquare => gridSquare.addEventListener('mouseover', function(e) {
+        if (mouseDownVar) 
+            e.target.style.cssText = `background-color: ${colorPicker.value}`;
     }));
+
+    squares.forEach(gridSquare => gridSquare.addEventListener('click', function(e) {
+        e.target.style.cssText = `background-color: ${colorPicker.value}`;
+    }));
+    
 }
 

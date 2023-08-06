@@ -3,6 +3,7 @@ body {
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
+    background-color: #332D2D;
     
 }
 
@@ -12,6 +13,7 @@ body {
     justify-content: center;
     text-align: center;
     gap: 20px;
+    color: white;
 }
 
 .colorPicker {
@@ -33,10 +35,11 @@ body {
 .row {
     display: flex;
     flex: 1;
-    
 }
 
 .gridSquare {
-    
     flex: 1;
 }
+
+
+
