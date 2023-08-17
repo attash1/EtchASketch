@@ -7,6 +7,7 @@ sliderValueObj.textContent = `${sliderObj.value} x ${sliderObj.value}`;
 
 
 let mouseDownVar = false;
+let currentColor = 	'#000000';
 
 document.addEventListener('mousedown', () => {
     mouseDownVar = true
@@ -24,15 +25,12 @@ sliderObj.oninput = function() {   //create new grid when slider is adjusted
     gridCreation();
 }
 
-
+//changes color when new color is selected
 
 colorPicker.oninput = function() {
-    const squares = document.querySelectorAll('.gridSquare');
-    squares.forEach(gridSquare => gridSquare.addEventListener('mouseover', function(e) {
-        if (mouseDownVar)
-            e.target.style.cssText = `background-color: ${colorPicker.value}`;
-    }));
+    currentColor = colorPicker.value;
 }
+
 
 eraserButton.addEventListener('click', gridCreation); //erase just creates a new grid of same size
 
@@ -66,11 +64,11 @@ function gridCreation() {
     const squares = document.querySelectorAll('.gridSquare');
     squares.forEach(gridSquare => gridSquare.addEventListener('mouseover', function(e) {
         if (mouseDownVar) 
-            e.target.style.cssText = `background-color: ${colorPicker.value}`;
+            e.target.style.cssText = `background-color: ${currentColor}`;
     }));
 
     squares.forEach(gridSquare => gridSquare.addEventListener('click', function(e) {
-        e.target.style.cssText = `background-color: ${colorPicker.value}`;
+        e.target.style.cssText = `background-color: ${currentColor}`;
     }));
     
 }
